@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tip Calculator</title>
+    <style>
+        /* Page styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tip Calculator</h1>
+
+    <!-- User input for bill amount -->
+    <input type="number" id="bill" placeholder="Enter bill amount">
+
+    <!-- Dropdown to select tip percentage -->
+    <select id="tipPercent">
+        <option value="10">10%</option>
+        <option value="15" selected>15%</option>
+        <option value="20">20%</option>
+    </select>
+
+    <!-- Button to calculate tip -->
+    <button onclick="calculateTip()">Calculate Tip</button>
+
+    <!-- Div to display tip result -->
+    <div id="result">Tip Amount: $0.00</div>
+
+    <script>
+        // Function to calculate tip
+        function calculateTip() {
+            // Get input values
+            let bill = parseFloat(document.getElementById('bill').value);
+            let tipPercent = parseFloat(document.getElementById('tipPercent').value);
+
+            // Validate bill input
+            if (isNaN(bill) || bill <= 0) {
+                alert("Please enter a valid bill amount!");
+                return;
+            }
+
+            // Calculate tip
+            let tip = bill * (tipPercent / 100);
+
+            // Display tip in result div
+            document.getElementById('result').innerHTML = "Tip Amount: $" + tip.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
